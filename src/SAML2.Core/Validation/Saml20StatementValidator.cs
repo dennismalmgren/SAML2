@@ -161,10 +161,10 @@ namespace SAML2.Validation
                             throw new Saml20FormatException("AuthnContextClassRef must be in the first element");
                         }
 
-                        if (!Uri.IsWellFormedUriString((string)authnContext.Items[i], UriKind.Absolute))
-                        {
-                            throw new Saml20FormatException("AuthnContextClassRef has a value which is not a wellformed absolute uri");
-                        }
+                        //if (!Uri.IsWellFormedUriString((string)authnContext.Items[i], UriKind.Absolute))
+                        //{
+                        //    throw new Saml20FormatException("AuthnContextClassRef has a value which is not a wellformed absolute uri");
+                        //}
 
                         break;
                     case Schema.Core.AuthnContextType.AuthnContextDeclRef:
@@ -178,9 +178,9 @@ namespace SAML2.Validation
                         // There is some concern about this being a valid check.
                         // See: https://lists.oasis-open.org/archives/security-services/200703/msg00004.html
                         // http://saml2.codeplex.com/SourceControl/network/forks/etlerch/saml2/contribution/5740
-                        if (!Uri.IsWellFormedUriString((string)authnContext.Items[i], UriKind.Absolute)) {
-                            throw new Saml20FormatException("AuthnContextDeclRef has a value which is not a wellformed absolute uri");
-                        }
+                        //if (!Uri.IsWellFormedUriString((string)authnContext.Items[i], UriKind.Absolute)) {
+                        //    throw new Saml20FormatException("AuthnContextDeclRef has a value which is not a wellformed absolute uri");
+                        //}
 
                     break;
                     case Schema.Core.AuthnContextType.AuthnContextDecl:
@@ -199,10 +199,10 @@ namespace SAML2.Validation
             // Values MUST have xsi schema type anyUri:
             foreach (var authnAuthority in authnContext.AuthenticatingAuthority)
             {
-                if (!Uri.IsWellFormedUriString(authnAuthority, UriKind.Absolute))
-                {
-                    throw new Saml20FormatException("AuthenticatingAuthority array contains a value which is not a wellformed absolute uri");
-                }
+                //if (!Uri.IsWellFormedUriString(authnAuthority, UriKind.Absolute))
+                //{
+                //    throw new Saml20FormatException("AuthenticatingAuthority array contains a value which is not a wellformed absolute uri");
+                //}
             }
         }
 
@@ -222,10 +222,10 @@ namespace SAML2.Validation
             }
 
             // If it is not empty, it MUST BE a valid URI
-            if (statement.Resource.Length > 0 && !Uri.IsWellFormedUriString(statement.Resource, UriKind.Absolute))
-            {
-                throw new Saml20FormatException("Resource attribute of AuthzDecisionStatement has a value which is not a wellformed absolute uri");
-            }
+            //if (statement.Resource.Length > 0 && !Uri.IsWellFormedUriString(statement.Resource, UriKind.Absolute))
+            //{
+            //    throw new Saml20FormatException("Resource attribute of AuthzDecisionStatement has a value which is not a wellformed absolute uri");
+            //}
 
             // NOTE: Decision property validation is done implicitly be the deserializer since it is represented by an enumeration
             if (statement.Action == null || statement.Action.Length == 0)
@@ -242,10 +242,10 @@ namespace SAML2.Validation
                     throw new Saml20FormatException("Namespace attribute of Action element must contain at least one non-whitespace character");
                 }
 
-                if (!Uri.IsWellFormedUriString(action.Namespace, UriKind.Absolute))
-                {
-                    throw new Saml20FormatException("Namespace attribute of Action element has a value which is not a wellformed absolute uri");
-                }
+                //if (!Uri.IsWellFormedUriString(action.Namespace, UriKind.Absolute))
+                //{
+                //    throw new Saml20FormatException("Namespace attribute of Action element has a value which is not a wellformed absolute uri");
+                //}
             }
         }
     }
